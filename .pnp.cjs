@@ -34,6 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@typescript-eslint/parser", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.27"],\
+            ["decimal.js", "npm:10.4.2"],\
             ["eslint", "npm:8.26.0"],\
             ["eslint-config-prettier", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:8.5.0"],\
             ["eslint-config-standard-with-typescript", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:23.0.0"],\
@@ -1829,6 +1830,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/decamelize-npm-1.2.0-c5a2fdc622-ad8c51a7e7.zip/node_modules/decamelize/",\
           "packageDependencies": [\
             ["decamelize", "npm:1.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["decimal.js", [\
+        ["npm:10.4.2", {\
+          "packageLocation": "./.yarn/cache/decimal.js-npm-10.4.2-0119c97ba5-536cd6816a.zip/node_modules/decimal.js/",\
+          "packageDependencies": [\
+            ["decimal.js", "npm:10.4.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5298,6 +5308,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@typescript-eslint/parser", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.27"],\
+            ["decimal.js", "npm:10.4.2"],\
             ["eslint", "npm:8.26.0"],\
             ["eslint-config-prettier", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:8.5.0"],\
             ["eslint-config-standard-with-typescript", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:23.0.0"],\

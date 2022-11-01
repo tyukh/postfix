@@ -20,5 +20,8 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "prettier": "^2.7.1",
     "typescript": "*"
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.2"
   }
 }
