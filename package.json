@@ -1,0 +1,24 @@
+{
+  "name": "postfix",
+  "packageManager": "yarn@3.2.4",
+  "devDependencies": {
+    "@types/eslint": "^8",
+    "@types/gulp": "^4",
+    "@types/prettier": "^2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@yarnpkg/sdks": "^3.0.0-rc.27",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "latest",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "prettier": "^2.7.1",
+    "typescript": "*"
+  }
+}
