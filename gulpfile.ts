@@ -7,9 +7,9 @@ import sourcemaps from "gulp-sourcemaps";
 const tsProject = ts.createProject("tsconfig.json");
 
 gulp.task("default", function () {
-  return tsProject.src()
+  return tsProject
+    .src()
     .pipe(sourcemaps.init())
     .pipe(tsProject())
-    .js
-    .pipe(gulp.dest("./dist"));
+    .js.pipe(gulp.dest("./dist"));
 });

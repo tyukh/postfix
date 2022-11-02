@@ -1,4 +1,4 @@
-/* extension.js
+/* extension.ts
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,15 +16,12 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-/* eslint-disable jsdoc/require-jsdoc */
-/* exported init enable disable */
-
-'use strict';
+"use strict";
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Plugin = Me.imports.plugin.plugin;
 
 function init(meta) {
-    return Plugin.plugin(meta);
+  return Plugin.plugin(meta);
 }
