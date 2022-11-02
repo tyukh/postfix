@@ -27,7 +27,10 @@
   // "typescript.tsdk": ".yarn/sdks/typescript/lib",
   // "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
-    "gulpfile"
+    "gmodule",
+    "gobject",
+    "gulpfile",
+    "printerr"
   ],
   "json.schemas": [
     {
