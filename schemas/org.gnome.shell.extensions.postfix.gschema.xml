@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schemalist SYSTEM "gschema.dtd">
+<schemalist>
+  <enum id="org.gnome.shell.extensions.postfix.enum-launcher-position">
+    <value value="0" nick="first"/>    
+    <value value="-1" nick="last"/>    
+  </enum>
+  <schema id="org.gnome.shell.extensions.postfix" path="/org/gnome/shell/extensions/postfix/">
+    <!-- See also: https://docs.gtk.org/glib/gvariant-format-strings.html -->
+    <key name="font" type="s">
+      <default>"Cantarell"</default>
+    </key>
+    <key name="launcher-panel" type="s">
+      <choices>
+        <choice value="left"/>
+        <choice value="center"/>
+        <choice value="right"/>
+      </choices>
+      <default>"center"</default>
+    </key>
+    <key name="launcher-position" enum="org.gnome.shell.extensions.postfix.enum-launcher-position">
+      <default>"last"</default>
+    </key>
+    <key name="original-mode" type="b">
+      <default>false</default>
+    </key>
+  </schema>
+</schemalist>

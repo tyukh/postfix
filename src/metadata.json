@@ -1,0 +1,13 @@
+{
+  "name": "Postfix: calculator with RPN",
+  "description": "Calculator with reverse polish notation",
+  "uuid": "postfix@tyukh.github.io",
+  "version": 1,
+  "shell-version": [
+    "42", "43"
+  ],
+  "url": "https://github.com/tyukh/postfix",
+  "session-modes": ["user", "unlock-dialog"],
+  "gettext-domain": "postfix@tyukh.github.io",
+  "settings-schema": "org.gnome.shell.extensions.postfix"
+}

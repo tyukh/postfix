@@ -1,0 +1,192 @@
+.panel-calc-rpn-PopupBaseMenuItem {
+    padding: 0em;
+    margin: 0em;
+}
+
+.panel-calc-rpn-BoxLayout {
+    padding: 0em;
+    margin: 0em;
+}
+
+.panel-calc-rpn-stack1BoxLayout {
+    padding-top: 0.5em;
+    padding-bottom: 0em;
+}
+
+.panel-calc-rpn-stack2BoxLayout {
+    padding-top: 0em;
+    padding-bottom: 0.5em;
+}
+
+.panel-calc-rpn-registerBoxLayout {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.panel-calc-rpn-registerValueBoxLayout {
+    color: white;
+    background-color: gray;
+    height: 1.5em;
+    border-radius: 0.4em;
+    border-width: 0.1em;
+    border-color: gainsboro;
+}
+
+.panel-calc-rpn-registerNameBoxLayout {
+    color: white;
+    width: 1.25em;
+    margin-left: 0.5em;
+}
+
+.panel-calc-rpn-registerValueLabel {
+    color: white;
+    margin-left: 0.5em;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.panel-calc-rpn-registerNameLabel {
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.panel-calc-rpn-indicatorBoxLayout {
+    padding-top: 0.75em;
+    padding-bottom: 0.5em;
+}
+
+.panel-calc-rpn-indicatorMantissaBoxLayout {
+    color: white;
+    background-color: grey;
+    height: 2.5em;
+    border-radius: 0.4em;
+    border-width: 0.1em;
+    border-color: gainsboro;
+}
+
+.panel-calc-rpn-indicatorExponentBoxLayout {
+    color: white;
+    background-color: grey;
+    height: 2.5em;
+    width: 4.5em;
+    margin-left: 0.3em; 
+    border-radius: 0.4em;
+    border-width: 0.1em;
+    border-color: gainsboro;
+}
+
+.panel-calc-rpn-indicatorMantissaLabel {
+    color: white;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    font-size: 1.75em;
+    font-weight: normal;
+}
+
+.panel-calc-rpn-indicatorExponentLabel {
+    color: white;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    font-size: 1.75em;
+    font-weight: normal;
+}
+
+.panel-calc-rpn-labelFLabel {
+    color: yellow;
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.panel-calc-rpn-labelKLabel {
+    color: lightskyblue;
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.panel-calc-rpn-grayButton {
+    color: black;
+    background-color: gainsboro;
+    height: 2.3em;
+    width: 2.3em;
+    margin: 0.15em;
+    border-radius: 0.3em;
+    border-width: 0.08em;
+    border-color: black;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.panel-calc-rpn-grayButton:hover {
+    border-color: white;
+}
+
+.panel-calc-rpn-redButton {
+    color: white;
+    background-color: crimson;
+    height: 2.3em;
+    width: 2.3em;
+    margin: 0.15em;
+    border-radius: 0.3em;
+    border-width: 0.08em;
+    border-color: black;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.panel-calc-rpn-redButton:hover {
+    border-color: white;
+}
+
+.panel-calc-rpn-yellowButton {
+    color: black;
+    background-color: yellow;
+    height: 2.3em;
+    width: 2.3em;
+    margin: 0.15em;
+    border-radius: 0.3em;
+    border-width: 0.08em;
+    border-color: black;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.panel-calc-rpn-yellowButton:hover {
+    border-color: white;
+}
+
+.panel-calc-rpn-blueButton {
+    color: white;
+    background-color: steelblue;
+    height: 2.3em;
+    width: 2.3em;
+    margin: 0.15em;
+    border-radius: 0.3em;
+    border-width: 0.08em;
+    border-color: black;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.panel-calc-rpn-blueButton:hover {
+    border-color: white;
+}
+
+.panel-calc-rpn-controlBoxLayout {
+    padding: 0em;
+    margin: 0em;
+}
+
+.panel-calc-rpn-controlButton {
+    color: grey;
+    height: 1.5em;
+    width: 1.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.panel-calc-rpn-controlButton:hover {
+    color: white;
+}
