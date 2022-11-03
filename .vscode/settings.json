@@ -20,13 +20,18 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    // Default (format when you paste)
+    "editor.formatOnPaste": true,
+    // Default (format when you save)
+    "editor.formatOnSave": true,
   },
   // if prettier plugin on uncomment
   // "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
   // "typescript.tsdk": ".yarn/sdks/typescript/lib",
   // "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "arrowParens",
     "gmodule",
     "gobject",
     "gulpfile",
