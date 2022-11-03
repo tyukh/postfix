@@ -1,21 +1,27 @@
 {
     "env": {
         "es2021": true,
-        "node": true
+        "node": true,
+        "browser": true
     },
     "extends": [
-        // "plugin:@typescript-eslint/recommended",
         "standard-with-typescript",
-        "plugin:prettier/recommended"
+        "plugin:@typescript-eslint/recommended", // ts-plugin enabled
+        "plugin:prettier/recommended" // prettier-plugin enabled
+    ],
+    "plugins": [
+        "@typescript-eslint" // ts-plugin enabled
     ],
     "overrides": [],
+    "parser": "@typescript-eslint/parser", // ts-plugin enabled
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module",
+        // "sourceType": "module", // ts-plugin disabled
         "project": [
             "./tsconfig.json",
             "./gulpfile.json"
         ]
     },
-    "rules": {}
+    "rules": {},
+    "root": true // ts-plugin enabled
 }

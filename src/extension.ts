@@ -22,6 +22,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Plugin = Me.imports.plugin.plugin;
 
-function init(meta) {
+export function init(meta): Plugin {
   return Plugin.plugin(meta);
 }
