@@ -1,28 +1,68 @@
-"use strict";
+'use strict';
 
 declare function log(msg: string): void;
 declare function print(msg: string): void;
 declare function logError(error: Error, msg?: string): void;
 declare function printerr(msg: string): void;
 
-declare interface GjsGiImports {
-    versions: {
-        [key: string]: string;
-    };
-    GLib: typeof import("@gi-types/glib");
-    Gtk: typeof import("@gi-types/gtk");
-    Gio: typeof import("@gi-types/gio");
-    GObject: typeof import("@gi-types/gobject");
+declare interface GjsExtensionUtils {
+  initTranslations: (domain?: string) => void;
+  getSettings: (schema?: string) => Gio.Settings;
+  openPrefs: () => void;
+  getCurrentExtension: () => GjsExtension;
 }
 
-declare module "@gi-types/gmodule" {
-    var _: any;
+declare interface GjsExtensionMetadata {
+  uuid: string;
+  name: string;
+  'settings-schema'?: string;
+  'gettext-domain'?: string;
+}
 
-    export default _;
+declare interface GjsExtension {
+  metadata: GjsExtensionMetadata;
+  uuid: string;
+  dir: Gio.File;
+  path: string;
+}
+
+declare interface GjsGiImports {
+  versions: {
+    [key: string]: string;
+  };
+  GObject: typeof import('@gi-types/gobject');
+  Gio: typeof import('@gi-types/gio');
+  Gtk: typeof import('@gi-types/gtk');
+  Adw: typeof import('@gi-types/adw1');
+  Clutter: typeof import('@gi-types/clutter');
+  St: typeof import('@gi-types/st');
+}
+
+declare interface GjsMiscImports {
+  extensionUtils: GjsExtensionUtils;
+}
+
+// declare interface GjsUiImports {
+//   main: any;
+//   panelMenu: any;
+//   popupMenu: any;
+// }
+
+declare interface GjsGettextImports {
+  gettext: (msgid: string) => string;
+  ngettext: (msgid1: string, msgid2: string, n: number) => string;
+  domain: (domainName: string) => {
+    gettext: (msgid: string) => string;
+    ngettext: (msgid1: string, msgid2: string, n: number) => string;
+  };
 }
 
 declare interface GjsImports {
-    gi: GjsGiImports;
+  gi: GjsGiImports;
+  misc: GjsMiscImports;
+  // ui: GjsUiImports;
+  ui: typeof imports.ui;
+  gettext: GjsGettextImports;
 }
 
 declare const imports: GjsImports;

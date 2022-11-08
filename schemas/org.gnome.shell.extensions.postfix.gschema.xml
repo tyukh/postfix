@@ -10,7 +10,7 @@
     <key name="font" type="s">
       <default>"Cantarell"</default>
     </key>
-    <key name="launcher-panel" type="s">
+    <key name="launcher-box" type="s">
       <choices>
         <choice value="left"/>
         <choice value="center"/>

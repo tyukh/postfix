@@ -19,7 +19,7 @@
         // "sourceType": "module", // ts-plugin disabled
         "project": [
             "./tsconfig.json",
-            "./gulpfile.json"
+            "./src/tsconfig.json"
         ]
     },
     "rules": {},

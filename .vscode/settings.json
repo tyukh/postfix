@@ -19,33 +19,19 @@
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     // Default (format when you paste)
     "editor.formatOnPaste": true,
     // Default (format when you save)
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
-  // if prettier plugin on uncomment
-  // "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  // "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  // "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": [
-    "arrowParens",
-    "gmodule",
-    "gobject",
-    "gulpfile",
-    "printerr"
-  ],
-  "json.schemas": [
-    {
-      "fileMatch": [
-        "/gulpfile.json"
-      ],
-      "url": "https://json.schemastore.org/tsconfig.json"
-    }
-  ],
-  "files.associations": {
-    "gulpfile.json": "jsonc"
-  }
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "cSpell.usePnP": true,
+  "npm.packageManager": "yarn", 
 }

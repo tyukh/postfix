@@ -1,6 +1,11 @@
 {
   "name": "postfix",
   "packageManager": "yarn@3.2.4",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "lint": "yarn eslint --fix ./src",
+    "build": "yarn gulp"
+  },
   "devDependencies": {
     "@types/eslint": "^8",
     "@types/gulp": "^4",
@@ -21,9 +26,16 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
     "typescript": "*"
   },
   "dependencies": {
+    "@gi-types/adw1": "^1.1.1",
+    "@gi-types/clutter": "^7.0.6",
+    "@gi-types/gio": "^2.66.9",
+    "@gi-types/gobject": "^2.66.9",
+    "@gi-types/gtk": "^3.24.9",
+    "@gi-types/st": "^1.0.6",
     "decimal.js": "^10.4.2"
   }
 }

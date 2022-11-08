@@ -1,27 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Created with Cambalache 0.10.3 -->
 <interface>
-  <!-- interface-name prefs.ui -->
-  <!-- interface-copyright 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
-SPDX-License-Identifier: GPL-2.0-or-later 
-  -->
+  <!-- interface-name preferences.ui -->
+  <!-- interface-copyright SPDX-License-Identifier: GPL-2.0-or-later -->
   <!-- interface-authors Roman Tyukh -->
   <requires lib="gtk" version="4.6" />
   <requires lib="libadwaita" version="1.1" />
-  <object class="GtkAdjustment" id="launcherPanelAdjustment">
+  <object class="GtkAdjustment" id="launcherBoxAdjustment">
     <property name="lower">0</property>
     <property name="upper">2</property>
     <property name="step-increment">1</property>
@@ -56,11 +41,11 @@ SPDX-License-Identifier: GPL-2.0-or-later
         </child>
         <child>
           <object class="AdwActionRow">
-            <property name="activatable-widget">launcherPanel</property>
-            <property name="title" translatable="yes">Panel group</property>
+            <property name="activatable-widget">launcherBox</property>
+            <property name="title" translatable="yes">Panel box</property>
             <property name="subtitle" translatable="yes">Side of the panel where the extension icon placed</property>
             <child>
-              <object class="GtkScale" id="launcherPanel">
+              <object class="GtkScale" id="launcherBox">
                 <property name="digits">0</property>
                 <property name="draw-value">true</property>
                 <property name="has-origin">false</property>
@@ -69,8 +54,8 @@ SPDX-License-Identifier: GPL-2.0-or-later
                 <property name="restrict-to-fill-level">false</property>
                 <property name="show-fill-level">false</property>
                 <property name="value-pos">top</property>
-                <property name="adjustment">launcherPanelAdjustment</property>
-                <signal name="value-changed" handler="_onLauncherPanelChange" />
+                <property name="adjustment">launcherBoxAdjustment</property>
+                <signal name="value-changed" handler="_onLauncherBoxChange" />
               </object>
             </child>
           </object>
@@ -78,7 +63,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
         <child>
           <object class="AdwActionRow">
             <property name="activatable-widget">launcherPosition</property>
-            <property name="title" translatable="yes">Position in panel group</property>
+            <property name="title" translatable="yes">Position in panel box group</property>
             <property name="subtitle" translatable="yes">Position of the extension icon in the icon group</property>
             <child>
               <object class="GtkScale" id="launcherPosition">
