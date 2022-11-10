@@ -115,8 +115,7 @@ class Value {
   }
 }
 
-// var Processor = class Processor {
-class Processor {
+export var Processor = class Processor {
   private _x: Decimal.Decimal;
   private _y: Decimal.Decimal;
   private _z: Decimal.Decimal;

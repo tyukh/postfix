@@ -47,7 +47,7 @@ const Key = GObject.registerClass(
   }
 );
 
-export const Calculator = GObject.registerClass(
+export var Calculator = GObject.registerClass(
   {
     Properties: {
       font: GObject.ParamSpec.string(

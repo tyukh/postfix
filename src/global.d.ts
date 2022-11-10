@@ -30,11 +30,12 @@ declare interface GjsGiImports {
   versions: {
     [key: string]: string;
   };
-  GObject: typeof import('@gi-types/gobject');
-  Gio: typeof import('@gi-types/gio');
-  Gtk: typeof import('@gi-types/gtk');
   Adw: typeof import('@gi-types/adw1');
   Clutter: typeof import('@gi-types/clutter');
+  Gio: typeof import('@gi-types/gio');
+  Glib: typeof import('@gi-types/glib');
+  GObject: typeof import('@gi-types/gobject');
+  Gtk: typeof import('@gi-types/gtk');
   St: typeof import('@gi-types/st');
 }
 

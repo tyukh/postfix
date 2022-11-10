@@ -11,6 +11,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Application = Me.imports.application.application;
 
-export function init(meta: GjsExtensionMetadata): Application {
-  return Application.application(meta.uuid);
+export function init(meta: typeof Me.metadata): Application.Application {
+  return new Application.Application({uuid: meta.uuid});
 }

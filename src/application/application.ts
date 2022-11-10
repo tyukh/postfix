@@ -18,8 +18,7 @@ const Me = ExtensionUtils.getCurrentExtension();
 const Main = imports.ui.main;
 const Interface = Me.imports.application.interface;
 
-// const Application = GObject.registerClass(
-GObject.registerClass(
+export var Application = GObject.registerClass(
   {
     Properties: {
       uuid: GObject.ParamSpec.string(
@@ -102,7 +101,3 @@ GObject.registerClass(
     }
   }
 );
-
-export function application(id: string): Application {
-  return new Application({uuid: id});
-}

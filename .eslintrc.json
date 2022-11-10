@@ -5,7 +5,8 @@
         "browser": true
     },
     "extends": [
-        "standard-with-typescript",
+        // "standard-with-typescript",
+        "eslint:recommended", 
         "plugin:@typescript-eslint/recommended", // ts-plugin enabled
         "plugin:prettier/recommended" // prettier-plugin enabled
     ],
