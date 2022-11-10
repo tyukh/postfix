@@ -29,13 +29,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@gi-types/adw1", "npm:1.1.1"],\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/gtk", "npm:3.24.9"],\
-            ["@gi-types/st", "npm:1.0.6"],\
+            ["@gi-types/clutter10", "npm:10.0.1"],\
+            ["@gi-types/gio2", "npm:2.72.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"],\
+            ["@gi-types/gtk4", "npm:4.6.1"],\
+            ["@gi-types/st1", "npm:1.0.1"],\
             ["@types/eslint", "npm:8.4.9"],\
             ["@types/gulp", "npm:4.0.9"],\
+            ["@types/node", "npm:18.11.9"],\
             ["@types/prettier", "npm:2.7.1"],\
             ["@typescript-eslint/eslint-plugin", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@typescript-eslint/parser", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
@@ -122,23 +124,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/atk", [\
-        ["npm:2.36.7", {\
-          "packageLocation": "./.yarn/cache/@gi-types-atk-npm-2.36.7-00640081eb-3e041bc298.zip/node_modules/@gi-types/atk/",\
+      ["@gi-types/atk1", [\
+        ["npm:2.36.0", {\
+          "packageLocation": "./.yarn/cache/@gi-types-atk1-npm-2.36.0-e671bb095f-48f60893a4.zip/node_modules/@gi-types/atk1/",\
           "packageDependencies": [\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/cairo", [\
-        ["npm:1.0.3", {\
-          "packageLocation": "./.yarn/cache/@gi-types-cairo-npm-1.0.3-643789f3a2-c871c66468.zip/node_modules/@gi-types/cairo/",\
-          "packageDependencies": [\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
+            ["@gi-types/atk1", "npm:2.36.0"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -153,60 +145,45 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/cally", [\
-        ["npm:7.0.3", {\
-          "packageLocation": "./.yarn/cache/@gi-types-cally-npm-7.0.3-56ed5811de-37f7126e64.zip/node_modules/@gi-types/cally/",\
+      ["@gi-types/cally10", [\
+        ["npm:10.0.1", {\
+          "packageLocation": "./.yarn/cache/@gi-types-cally10-npm-10.0.1-0c7fb0a724-fbedee61ba.zip/node_modules/@gi-types/cally10/",\
           "packageDependencies": [\
-            ["@gi-types/cally", "npm:7.0.3"],\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/coglpango", "npm:7.0.2"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
+            ["@gi-types/cally10", "npm:10.0.1"],\
+            ["@gi-types/atk1", "npm:2.36.0"],\
+            ["@gi-types/clutter10", "npm:10.0.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/clutter", [\
-        ["npm:7.0.6", {\
-          "packageLocation": "./.yarn/cache/@gi-types-clutter-npm-7.0.6-3ff38cab8b-9cc2b4faab.zip/node_modules/@gi-types/clutter/",\
+      ["@gi-types/clutter10", [\
+        ["npm:10.0.1", {\
+          "packageLocation": "./.yarn/cache/@gi-types-clutter10-npm-10.0.1-77fe263004-12711ab25c.zip/node_modules/@gi-types/clutter10/",\
           "packageDependencies": [\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/coglpango", "npm:7.0.2"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/graphene", "npm:1.0.1"],\
-            ["@gi-types/json", "npm:1.6.6"],\
-            ["@gi-types/pango", "npm:1.0.5"]\
+            ["@gi-types/clutter10", "npm:10.0.1"],\
+            ["@gi-types/atk1", "npm:2.36.0"],\
+            ["@gi-types/cairo1", "npm:1.0.1"],\
+            ["@gi-types/cogl10", "npm:10.0.1"],\
+            ["@gi-types/gio2", "npm:2.72.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"],\
+            ["@gi-types/graphene1", "npm:1.0.1"],\
+            ["@gi-types/json1", "npm:1.6.1"],\
+            ["@gi-types/pango1", "npm:1.50.1"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/cogl", [\
-        ["npm:7.0.3", {\
-          "packageLocation": "./.yarn/cache/@gi-types-cogl-npm-7.0.3-22c2c26ced-b8413e8ba0.zip/node_modules/@gi-types/cogl/",\
+      ["@gi-types/cogl10", [\
+        ["npm:10.0.1", {\
+          "packageLocation": "./.yarn/cache/@gi-types-cogl10-npm-10.0.1-409396b4ac-662359ba4c.zip/node_modules/@gi-types/cogl10/",\
           "packageDependencies": [\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/graphene", "npm:1.0.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/coglpango", [\
-        ["npm:7.0.2", {\
-          "packageLocation": "./.yarn/cache/@gi-types-coglpango-npm-7.0.2-faac4cfdf6-97aebd3994.zip/node_modules/@gi-types/coglpango/",\
-          "packageDependencies": [\
-            ["@gi-types/coglpango", "npm:7.0.2"],\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/pango", "npm:1.0.5"]\
+            ["@gi-types/cogl10", "npm:10.0.1"],\
+            ["@gi-types/cairo1", "npm:1.0.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"],\
+            ["@gi-types/graphene1", "npm:1.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -217,31 +194,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@gi-types/freetype22", "npm:2.0.1"],\
             ["@gi-types/gobject2", "npm:2.72.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/gdesktopenums", [\
-        ["npm:3.0.3", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gdesktopenums-npm-3.0.3-b5cd575489-02db5b7314.zip/node_modules/@gi-types/gdesktopenums/",\
-          "packageDependencies": [\
-            ["@gi-types/gdesktopenums", "npm:3.0.3"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/gdk", [\
-        ["npm:3.24.7", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gdk-npm-3.24.7-ec33bfddf9-d4940fa3b7.zip/node_modules/@gi-types/gdk/",\
-          "packageDependencies": [\
-            ["@gi-types/gdk", "npm:3.24.7"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/gdkpixbuf", "npm:2.0.5"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/pango", "npm:1.0.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -261,18 +213,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/gdkpixbuf", [\
-        ["npm:2.0.5", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gdkpixbuf-npm-2.0.5-c5296bd9b4-46d4364575.zip/node_modules/@gi-types/gdkpixbuf/",\
-          "packageDependencies": [\
-            ["@gi-types/gdkpixbuf", "npm:2.0.5"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gi-types/gdkpixbuf2", [\
         ["npm:2.0.2", {\
           "packageLocation": "./.yarn/cache/@gi-types-gdkpixbuf2-npm-2.0.2-ecd43b04a7-01f91a75bf.zip/node_modules/@gi-types/gdkpixbuf2/",\
@@ -286,17 +226,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/gio", [\
-        ["npm:2.66.9", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gio-npm-2.66.9-2bb5f3dfed-4dee6e3571.zip/node_modules/@gi-types/gio/",\
-          "packageDependencies": [\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gi-types/gio2", [\
         ["npm:2.72.1", {\
           "packageLocation": "./.yarn/cache/@gi-types-gio2-npm-2.72.1-d5bc9886a6-c565318ad3.zip/node_modules/@gi-types/gio2/",\
@@ -304,16 +233,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@gi-types/gio2", "npm:2.72.1"],\
             ["@gi-types/glib2", "npm:2.72.1"],\
             ["@gi-types/gobject2", "npm:2.72.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/glib", [\
-        ["npm:2.66.10", {\
-          "packageLocation": "./.yarn/cache/@gi-types-glib-npm-2.66.10-40877f225b-d739358d72.zip/node_modules/@gi-types/glib/",\
-          "packageDependencies": [\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -339,32 +258,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/gobject", [\
-        ["npm:2.66.9", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gobject-npm-2.66.9-57444eaa80-90f3e96403.zip/node_modules/@gi-types/gobject/",\
-          "packageDependencies": [\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gi-types/gobject2", [\
         ["npm:2.72.1", {\
           "packageLocation": "./.yarn/cache/@gi-types-gobject2-npm-2.72.1-616568a46f-78275bc075.zip/node_modules/@gi-types/gobject2/",\
           "packageDependencies": [\
             ["@gi-types/gobject2", "npm:2.72.1"],\
             ["@gi-types/glib2", "npm:2.72.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/graphene", [\
-        ["npm:1.0.1", {\
-          "packageLocation": "./.yarn/cache/@gi-types-graphene-npm-1.0.1-c2632c2474-38ba69635e.zip/node_modules/@gi-types/graphene/",\
-          "packageDependencies": [\
-            ["@gi-types/graphene", "npm:1.0.1"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -394,24 +293,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/gtk", [\
-        ["npm:3.24.9", {\
-          "packageLocation": "./.yarn/cache/@gi-types-gtk-npm-3.24.9-f9808dac4e-029d3f1a25.zip/node_modules/@gi-types/gtk/",\
-          "packageDependencies": [\
-            ["@gi-types/gtk", "npm:3.24.9"],\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/gdk", "npm:3.24.7"],\
-            ["@gi-types/gdkpixbuf", "npm:2.0.5"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/pango", "npm:1.0.5"],\
-            ["@gi-types/xlib", "npm:2.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gi-types/gtk4", [\
         ["npm:4.6.1", {\
           "packageLocation": "./.yarn/cache/@gi-types-gtk4-npm-4.6.1-407e1811ac-c397a23edc.zip/node_modules/@gi-types/gtk4/",\
@@ -430,17 +311,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/harfbuzz", [\
-        ["npm:0.0.0", {\
-          "packageLocation": "./.yarn/cache/@gi-types-harfbuzz-npm-0.0.0-57bc715ff9-eba2729f05.zip/node_modules/@gi-types/harfbuzz/",\
-          "packageDependencies": [\
-            ["@gi-types/harfbuzz", "npm:0.0.0"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@gi-types/harfbuzz2", [\
         ["npm:4.4.2", {\
           "packageLocation": "./.yarn/cache/@gi-types-harfbuzz2-npm-4.4.2-3fffe20503-d79fd8f4b9.zip/node_modules/@gi-types/harfbuzz2/",\
@@ -453,49 +323,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/json", [\
-        ["npm:1.6.6", {\
-          "packageLocation": "./.yarn/cache/@gi-types-json-npm-1.6.6-e1577c492b-c1baa0d475.zip/node_modules/@gi-types/json/",\
+      ["@gi-types/json1", [\
+        ["npm:1.6.1", {\
+          "packageLocation": "./.yarn/cache/@gi-types-json1-npm-1.6.1-5a84de6b9c-8899402a12.zip/node_modules/@gi-types/json1/",\
           "packageDependencies": [\
-            ["@gi-types/json", "npm:1.6.6"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/meta", [\
-        ["npm:3.38.5", {\
-          "packageLocation": "./.yarn/cache/@gi-types-meta-npm-3.38.5-fcd5676de1-a49d8b3aa9.zip/node_modules/@gi-types/meta/",\
-          "packageDependencies": [\
-            ["@gi-types/meta", "npm:3.38.5"],\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/coglpango", "npm:7.0.2"],\
-            ["@gi-types/gdesktopenums", "npm:3.0.3"],\
-            ["@gi-types/gdk", "npm:3.24.7"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/gtk", "npm:3.24.9"],\
-            ["@gi-types/json", "npm:1.6.6"],\
-            ["@gi-types/pango", "npm:1.0.5"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/pango", [\
-        ["npm:1.0.5", {\
-          "packageLocation": "./.yarn/cache/@gi-types-pango-npm-1.0.5-672f01627a-80a2cbb492.zip/node_modules/@gi-types/pango/",\
-          "packageDependencies": [\
-            ["@gi-types/pango", "npm:1.0.5"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/harfbuzz", "npm:0.0.0"]\
+            ["@gi-types/json1", "npm:1.6.1"],\
+            ["@gi-types/gio2", "npm:2.72.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -513,33 +348,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@gi-types/st", [\
-        ["npm:1.0.6", {\
-          "packageLocation": "./.yarn/cache/@gi-types-st-npm-1.0.6-4105d8e85e-8baa3ce4d2.zip/node_modules/@gi-types/st/",\
+      ["@gi-types/st1", [\
+        ["npm:1.0.1", {\
+          "packageLocation": "./.yarn/cache/@gi-types-st1-npm-1.0.1-552e8d182d-82460f4c06.zip/node_modules/@gi-types/st1/",\
           "packageDependencies": [\
-            ["@gi-types/st", "npm:1.0.6"],\
-            ["@gi-types/atk", "npm:2.36.7"],\
-            ["@gi-types/cairo", "npm:1.0.3"],\
-            ["@gi-types/cally", "npm:7.0.3"],\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/cogl", "npm:7.0.3"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/glib", "npm:2.66.10"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/gtk", "npm:3.24.9"],\
-            ["@gi-types/json", "npm:1.6.6"],\
-            ["@gi-types/meta", "npm:3.38.5"],\
-            ["@gi-types/pango", "npm:1.0.5"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@gi-types/xlib", [\
-        ["npm:2.0.0", {\
-          "packageLocation": "./.yarn/cache/@gi-types-xlib-npm-2.0.0-aa4a92f788-237fa368f8.zip/node_modules/@gi-types/xlib/",\
-          "packageDependencies": [\
-            ["@gi-types/xlib", "npm:2.0.0"],\
-            ["@gi-types/gobject", "npm:2.66.9"]\
+            ["@gi-types/st1", "npm:1.0.1"],\
+            ["@gi-types/atk1", "npm:2.36.0"],\
+            ["@gi-types/cairo1", "npm:1.0.1"],\
+            ["@gi-types/cally10", "npm:10.0.1"],\
+            ["@gi-types/clutter10", "npm:10.0.1"],\
+            ["@gi-types/cogl10", "npm:10.0.1"],\
+            ["@gi-types/gio2", "npm:2.72.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"],\
+            ["@gi-types/json1", "npm:1.6.1"],\
+            ["@gi-types/pango1", "npm:1.50.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6065,13 +5888,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["postfix", "workspace:."],\
             ["@gi-types/adw1", "npm:1.1.1"],\
-            ["@gi-types/clutter", "npm:7.0.6"],\
-            ["@gi-types/gio", "npm:2.66.9"],\
-            ["@gi-types/gobject", "npm:2.66.9"],\
-            ["@gi-types/gtk", "npm:3.24.9"],\
-            ["@gi-types/st", "npm:1.0.6"],\
+            ["@gi-types/clutter10", "npm:10.0.1"],\
+            ["@gi-types/gio2", "npm:2.72.1"],\
+            ["@gi-types/glib2", "npm:2.72.1"],\
+            ["@gi-types/gobject2", "npm:2.72.1"],\
+            ["@gi-types/gtk4", "npm:4.6.1"],\
+            ["@gi-types/st1", "npm:1.0.1"],\
             ["@types/eslint", "npm:8.4.9"],\
             ["@types/gulp", "npm:4.0.9"],\
+            ["@types/node", "npm:18.11.9"],\
             ["@types/prettier", "npm:2.7.1"],\
             ["@typescript-eslint/eslint-plugin", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
             ["@typescript-eslint/parser", "virtual:5e7e25a546c846ed6bd3ddda41d1417a2d5bf12e1020a18b7b9af09d937685914c5d36ada4636ec0c90837b95422e1aabb0124b923af28eb0aa4b72bb04482a3#npm:5.42.0"],\
@@ -7260,7 +7085,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.11"],\
             ["@tsconfig/node14", "npm:1.0.3"],\
             ["@tsconfig/node16", "npm:1.0.3"],\
-            ["@types/node", null],\
+            ["@types/node", "npm:18.11.9"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\

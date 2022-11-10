@@ -1,12 +1,14 @@
 /* preferences.ts
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2022 Roman Tyukh
+ *
  */
 
 'use strict';
 
-import type * as GTK from '@gi-types/gtk';
-import type * as GIO from '@gi-types/gio';
+import type * as GTK from '@gi-types/gtk4';
+import type * as GIO from '@gi-types/gio2';
 
 const {Adw, GObject, Gtk} = imports.gi;
 const ExtensionUtils = imports.misc.extensionUtils;

@@ -1,3 +1,10 @@
+/* global.d.ts
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-FileCopyrightText: 2022 Roman Tyukh
+ *
+ */
+
 'use strict';
 
 declare function log(msg: string): void;
@@ -21,7 +28,7 @@ declare namespace Gjs {
   }
 
   declare interface Extension {
-    metadata: GjsExtensionMetadata;
+    metadata: ExtensionMetadata;
     uuid: string;
     dir: Gio.File;
     path: string;
@@ -31,13 +38,13 @@ declare namespace Gjs {
     versions: {
       [key: string]: string;
     };
-    Adw: typeof import('@gi-types/adw');
-    Clutter: typeof import('@gi-types/clutter');
-    Gio: typeof import('@gi-types/gio');
-    Glib: typeof import('@gi-types/glib');
-    GObject: typeof import('@gi-types/gobject');
-    Gtk: typeof import('@gi-types/gtk');
-    St: typeof import('@gi-types/st');
+    Adw: typeof import('@gi-types/adw1');
+    Clutter: typeof import('@gi-types/clutter10');
+    Gio: typeof import('@gi-types/gio2');
+    Glib: typeof import('@gi-types/glib2');
+    GObject: typeof import('@gi-types/gobject2');
+    Gtk: typeof import('@gi-types/gtk4');
+    St: typeof import('@gi-types/st1');
   }
 
   declare interface Misc {
