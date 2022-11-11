@@ -7,8 +7,9 @@
 
 'use strict';
 
-import type * as GTK from '@gi-types/gtk4';
+import type * as ADW from '@gi-types/adw1';
 import type * as GIO from '@gi-types/gio2';
+import type * as GTK from '@gi-types/gtk4';
 
 const {Adw, GObject, Gtk} = imports.gi;
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -34,7 +35,7 @@ export var Preferences = GObject.registerClass(
     private readonly _launcherBox!: GTK.Scale;
     private readonly _launcherPosition!: GTK.Scale;
 
-    constructor(window: GTK.Window, properties = {}) {
+    constructor(window: ADW.PreferencesWindow, properties = {}) {
       super(properties);
 
       this._settings = ExtensionUtils.getSettings();

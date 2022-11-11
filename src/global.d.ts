@@ -8,30 +8,40 @@
 'use strict';
 
 declare function log(msg: string): void;
-declare function print(msg: string): void;
 declare function logError(error: Error, msg?: string): void;
-declare function printerr(msg: string): void;
 
-declare namespace Gjs {
+declare namespace GJS {
+  import type * as GIO from '@gi-types/gio2';
+
   declare interface ExtensionUtils {
     initTranslations: (domain?: string) => void;
-    getSettings: (schema?: string) => Gio.Settings;
+    getSettings: (schema?: string) => GIO.Settings;
     openPrefs: () => void;
-    getCurrentExtension: () => GjsExtension;
+    getCurrentExtension: () => Extension;
   }
 
   declare interface ExtensionMetadata {
     uuid: string;
     name: string;
-    'settings-schema'?: string;
-    'gettext-domain'?: string;
+  }
+
+  declare interface ExtensionImports {
+    application: {
+      application: typeof import('./application/application');
+      interface: typeof import('./application/interface');
+      processor: typeof import('./application/processor');
+    };
+    preferences: {
+      preferences: typeof import('./preferences/preferences');
+    };
   }
 
   declare interface Extension {
     metadata: ExtensionMetadata;
     uuid: string;
-    dir: Gio.File;
+    dir: GIO.File;
     path: string;
+    imports: ExtensionImports;
   }
 
   declare interface Gi {
@@ -74,4 +84,4 @@ declare namespace Gjs {
   }
 }
 
-declare const imports: Gjs.Imports;
+declare const imports: GJS.Imports;
