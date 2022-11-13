@@ -7,5 +7,5 @@ import * as ts from 'gulp-typescript';
 const tsProject = ts.createProject('./src/tsconfig.json');
 
 gulp.task('default', function () {
-  return tsProject.src().pipe(tsProject()).js.pipe(gulp.dest('./dest'));
+  return tsProject.src().pipe(tsProject()).js.pipe(gulp.dest('./build'));
 });

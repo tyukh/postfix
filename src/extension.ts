@@ -7,12 +7,10 @@
 
 'use strict';
 
-imports.gi.versions.Gtk = '4.0';
-
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-const Application = Me.imports.application.application;
+const Calculator = Me.imports.calculator.calculator;
 
-export function init(meta: typeof Me.metadata): Application.Application {
-  return new Application.Application({uuid: meta.uuid});
+export function init(meta: typeof Me.metadata): GJS.IExtension {
+  return new Calculator.Calculator({uuid: meta.uuid});
 }

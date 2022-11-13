@@ -5,19 +5,22 @@
 
 'use strict';
 
+import type * as CLUTTER from '@gi-types/clutter10';
+import type * as GIO from '@gi-types/gio2';
+import type * as ST from '@gi-types/st1';
+
 const {GObject, St, Clutter} = imports.gi;
 const Gettext = imports.gettext;
 
-const ExtensionUtils: GjsExtensionUtils = imports.misc.extensionUtils;
-const Me: GjsExtension = ExtensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
 
 const Domain = Gettext.domain(Me.metadata.uuid);
 const _ = Domain.gettext;
-// const ngettext = Domain.ngettext;
 
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
-const Processor = Me.imports.application.processor;
+// const Processor = Me.imports.calculator.processor;
 
 const Key = GObject.registerClass(
   {
@@ -34,20 +37,44 @@ const Key = GObject.registerClass(
     },
   },
   class Key extends St.Button {
-    private _keyId: number;
+    private _keyId!: number | null;
 
-    get keyId(): number {
+    get keyId(): number | null {
       if (this._keyId === undefined) this._keyId = null;
       return this._keyId;
     }
 
-    set keyId(value: number) {
+    set keyId(value: number | null) {
       if (this._keyId !== value) this._keyId = value;
     }
   }
 );
 
-export var Calculator = GObject.registerClass(
+export interface IInterface {
+  get launcher(): GJS.PanelMenu.Button | null;
+  destroy(): void;
+}
+
+declare module '@gi-types/st1' {
+  interface BoxLayout {
+    add(actor: CLUTTER.Actor, props?: unknown): void;
+  }
+}
+
+declare module '@gi-types/gobject2' {
+  interface GObject {
+    connectObject(...args: []): void;
+  }
+}
+
+declare module '@gi-types/clutter10' {
+  interface Actor {
+    get actor(): CLUTTER.Actor;
+  }
+}
+
+// eslint-disable-next-line no-var
+export var Interface = GObject.registerClass(
   {
     Properties: {
       font: GObject.ParamSpec.string(
@@ -59,13 +86,21 @@ export var Calculator = GObject.registerClass(
       ),
     },
   },
-  class Calculator extends GObject.Object {
-    private readonly _settings: Gio.Settings;
-    private _launcher: PanelMenu.Button;
-    private readonly _menu: PopupMenu.PopupMenu;
-    private readonly _processor: Processor.Processor;
+  class Interface extends GObject.Object implements IInterface {
+    private readonly _settings: GIO.Settings;
+    private _launcher: GJS.PanelMenu.Button | null;
+    private readonly _menu: GJS.PopupMenu.PopupMenu;
+    // private readonly _processor: Processor.Processor;
 
-    private _font: string;
+    private _font!: string | null;
+
+    private _x1RegisterLabel!: ST.Label;
+    private _tRegisterLabel!: ST.Label;
+    private _zRegisterLabel!: ST.Label;
+    private _yRegisterLabel!: ST.Label;
+    private _xRegisterLabel!: ST.Label;
+    private _mantissaIndicatorLabel!: ST.Label;
+    private _exponentIndicatorLabel!: ST.Label;
 
     constructor(properties = {}) {
       super(properties);
@@ -73,34 +108,36 @@ export var Calculator = GObject.registerClass(
       this._settings = ExtensionUtils.getSettings();
 
       this._launcher = new PanelMenu.Button(0.0, _(`${Me.metadata.name} Indicator`));
-      this._menu = this._launcher.menu;
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
+      this._menu = this._launcher?.menu!;
 
-      this._processor = new Processor.Processor();
+      // this._processor = new Processor.Processor();
 
-      this._launcher.add_child(
+      this._launcher?.add_child(
         new St.Icon({
           icon_name: 'org.gnome.Calculator-symbolic',
           style_class: 'system-status-icon',
         })
       );
 
-      this._initControls(this._menu, this.font);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      this._initControls(this._menu, this.font!);
 
       // -- Init connections
-      this._processor.connectIndicators(this._onIndicatorSet.bind(this));
+      // this._processor.connectIndicators(this._onIndicatorSet.bind(this));
       this._menu.actor.connectObject('key-press-event', this._onKeyboardKeyEvent.bind(this), this);
     }
 
-    public get font(): string {
+    public get font(): string | null {
       if (this._font === undefined) this._font = null;
       return this._font;
     }
 
-    public set font(value: string) {
+    public set font(value: string | null) {
       if (this._font !== value) this._font = value;
     }
 
-    public get launcher(): PanelMenu.Button {
+    public get launcher(): GJS.PanelMenu.Button | null {
       return this._launcher;
     }
 
@@ -111,7 +148,7 @@ export var Calculator = GObject.registerClass(
       }
     }
 
-    public static Glyph = {
+    public static Glyph: Readonly<Record<string, string>> = {
       NONE: '',
 
       MODE_EE: _('EE'),
@@ -171,7 +208,7 @@ export var Calculator = GObject.registerClass(
       OP_ABSOLUTE: '|x|',
     };
 
-    private _initControls(menu: PopupMenu.PopupMenu, font: string): void {
+    private _initControls(menu: GJS.PopupMenu.PopupMenu, font: string): void {
       // -- Init Stack
       const stackArea = new PopupMenu.PopupSubMenuMenuItem(_('Stack registers'), false);
       stackArea.setOrnament(PopupMenu.Ornament.HIDDEN);
@@ -204,7 +241,7 @@ export var Calculator = GObject.registerClass(
       menu.addMenuItem(keyboardArea);
     }
 
-    private _initRegister(stackBox: Clutter.Actor, label: string, font: string): void {
+    private _initRegister(stackBox: ST.BoxLayout, label: string, font: string): ST.Label {
       const box = new St.BoxLayout({
         vertical: false,
         x_expand: true,
@@ -253,7 +290,7 @@ export var Calculator = GObject.registerClass(
       return value;
     }
 
-    private _initStack(stackArea: Clutter.Actor, font: string): void {
+    private _initStack(stackArea: GJS.PopupMenu.PopupSubMenuMenuItem, font: string): void {
       const stack1Box = new St.BoxLayout({
         vertical: true,
         x_expand: true,
@@ -284,7 +321,7 @@ export var Calculator = GObject.registerClass(
       stackArea.menu.box.add(stack2Box);
     }
 
-    private _initIndicator(indicatorArea: Clutter.Actor, font: string): void {
+    private _initIndicator(indicatorArea: GJS.PopupMenu.PopupBaseMenuItem, font: string): void {
       const indicatorBox = new St.BoxLayout({
         vertical: false,
         x_expand: true,
@@ -333,26 +370,26 @@ export var Calculator = GObject.registerClass(
       indicatorArea.actor.add_child(indicatorBox);
     }
 
-    private _initKeyboard(keyboardArea: Clutter.Actor, font: string): void {
+    private _initKeyboard(keyboardArea: GJS.PopupMenu.PopupBaseMenuItem, font: string): void {
       const keyMatrix = [
         {
           keys: [
             {
-              id: Processor.Processor.Key.F,
-              label: Calculator.Glyph.MODE_F,
-              labelF: Calculator.Glyph.NONE,
-              labelK: Calculator.Glyph.NONE,
+              id: 1, // Processor.Processor.Key.F,
+              label: Interface.Glyph.MODE_F,
+              labelF: Interface.Glyph.NONE,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-yellowButton',
             },
             {
-              id: Processor.Processor.Key.K,
-              label: Calculator.Glyph.MODE_K,
-              labelF: Calculator.Glyph.NONE,
-              labelK: Calculator.Glyph.NONE,
+              id: 2, // Processor.Processor.Key.K,
+              label: Interface.Glyph.MODE_K,
+              labelF: Interface.Glyph.NONE,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-blueButton',
             },
             {
-              id: Processor.Processor.Key.RESERVED_NULL,
+              id: 0, // Processor.Processor.Key.RESERVED_NULL,
             },
           ],
           labels: false,
@@ -360,78 +397,38 @@ export var Calculator = GObject.registerClass(
         {
           keys: [
             {
-              id: Processor.Processor.Key.SEVEN,
-              label: Calculator.Glyph.SEVEN,
-              labelF: Calculator.Glyph.OP_SINE,
-              labelK: Calculator.Glyph.OP_INTEGER,
+              id: 3, // Processor.Processor.Key.SEVEN,
+              label: Interface.Glyph.SEVEN,
+              labelF: Interface.Glyph.OP_SINE,
+              labelK: Interface.Glyph.OP_INTEGER,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.EIGHT,
-              label: Calculator.Glyph.EIGHT,
-              labelF: Calculator.Glyph.OP_COSINE,
-              labelK: Calculator.Glyph.OP_DECIMAL,
+              id: 4, // Processor.Processor.Key.EIGHT,
+              label: Interface.Glyph.EIGHT,
+              labelF: Interface.Glyph.OP_COSINE,
+              labelK: Interface.Glyph.OP_DECIMAL,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.NINE,
-              label: Calculator.Glyph.NINE,
-              labelF: Calculator.Glyph.OP_TANGENT,
-              labelK: Calculator.Glyph.NONE,
+              id: 5, // Processor.Processor.Key.NINE,
+              label: Interface.Glyph.NINE,
+              labelF: Interface.Glyph.OP_TANGENT,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.MINUS,
-              label: Calculator.Glyph.OP_SUBTRACT,
-              labelF: Calculator.Glyph.OP_SQRT,
-              labelK: Calculator.Glyph.NONE,
+              id: 6, // Processor.Processor.Key.MINUS,
+              label: Interface.Glyph.OP_SUBTRACT,
+              labelF: Interface.Glyph.OP_SQRT,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.DIVIDE,
-              label: Calculator.Glyph.OP_DIVIDE,
-              labelF: Calculator.Glyph.OP_1_DIV_X,
-              labelK: Calculator.Glyph.NONE,
-              style_class: 'panel-calc-rpn-grayButton',
-            },
-          ],
-          labels: true,
-        },
-        {
-          keys: [
-            {
-              id: Processor.Processor.Key.FOUR,
-              label: Calculator.Glyph.FOUR,
-              labelF: Calculator.Glyph.OP_ARCSINE,
-              labelK: Calculator.Glyph.OP_ABSOLUTE,
-              style_class: 'panel-calc-rpn-grayButton',
-            },
-            {
-              id: Processor.Processor.Key.FIVE,
-              label: Calculator.Glyph.FIVE,
-              labelF: Calculator.Glyph.OP_ARCCOSINE,
-              labelK: Calculator.Glyph.NONE,
-              style_class: 'panel-calc-rpn-grayButton',
-            },
-            {
-              id: Processor.Processor.Key.SIX,
-              label: Calculator.Glyph.SIX,
-              labelF: Calculator.Glyph.OP_ARCTANGENT,
-              labelK: Calculator.Glyph.NONE,
-              style_class: 'panel-calc-rpn-grayButton',
-            },
-            {
-              id: Processor.Processor.Key.PLUS,
-              label: Calculator.Glyph.OP_ADD,
-              labelF: Calculator.Glyph.PI,
-              labelK: Calculator.Glyph.NONE,
-              style_class: 'panel-calc-rpn-grayButton',
-            },
-            {
-              id: Processor.Processor.Key.MULTIPLY,
-              label: Calculator.Glyph.OP_MULTIPLY,
-              labelF: Calculator.Glyph.OP_X_SQ,
-              labelK: Calculator.Glyph.NONE,
+              id: 7, // Processor.Processor.Key.DIVIDE,
+              label: Interface.Glyph.OP_DIVIDE,
+              labelF: Interface.Glyph.OP_1_DIV_X,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
           ],
@@ -440,38 +437,38 @@ export var Calculator = GObject.registerClass(
         {
           keys: [
             {
-              id: Processor.Processor.Key.ONE,
-              label: Calculator.Glyph.ONE,
-              labelF: Calculator.Glyph.OP_E_POW_X,
-              labelK: Calculator.Glyph.NONE,
+              id: 8, // Processor.Processor.Key.FOUR,
+              label: Interface.Glyph.FOUR,
+              labelF: Interface.Glyph.OP_ARCSINE,
+              labelK: Interface.Glyph.OP_ABSOLUTE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.TWO,
-              label: Calculator.Glyph.TWO,
-              labelF: Calculator.Glyph.OP_LG,
-              labelK: Calculator.Glyph.NONE,
+              id: 9, // Processor.Processor.Key.FIVE,
+              label: Interface.Glyph.FIVE,
+              labelF: Interface.Glyph.OP_ARCCOSINE,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.THREE,
-              label: Calculator.Glyph.THREE,
-              labelF: Calculator.Glyph.OP_LN,
-              labelK: Calculator.Glyph.NONE,
+              id: 10, // Processor.Processor.Key.SIX,
+              label: Interface.Glyph.SIX,
+              labelF: Interface.Glyph.OP_ARCTANGENT,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.SWAP,
-              label: Calculator.Glyph.OP_SWAP,
-              labelF: Calculator.Glyph.OP_X_POW_Y,
-              labelK: Calculator.Glyph.NONE,
+              id: 11, // Processor.Processor.Key.PLUS,
+              label: Interface.Glyph.OP_ADD,
+              labelF: Interface.Glyph.PI,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.PUSH,
-              label: Calculator.Glyph.OP_PUSH_X,
-              labelF: Calculator.Glyph.OP_BACK_X,
-              labelK: Calculator.Glyph.NONE,
+              id: 12, // Processor.Processor.Key.MULTIPLY,
+              label: Interface.Glyph.OP_MULTIPLY,
+              labelF: Interface.Glyph.OP_X_SQ,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
           ],
@@ -480,38 +477,78 @@ export var Calculator = GObject.registerClass(
         {
           keys: [
             {
-              id: Processor.Processor.Key.ZERO,
-              label: Calculator.Glyph.ZERO,
-              labelF: Calculator.Glyph.OP_TEN_POW_X,
-              labelK: Calculator.Glyph.OP_NOP,
+              id: 13, // Processor.Processor.Key.ONE,
+              label: Interface.Glyph.ONE,
+              labelF: Interface.Glyph.OP_E_POW_X,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.POINT,
-              label: Calculator.Glyph.POINT,
-              labelF: Calculator.Glyph.OP_CIRCLE,
-              labelK: Calculator.Glyph.NONE,
+              id: 14, // Processor.Processor.Key.TWO,
+              label: Interface.Glyph.TWO,
+              labelF: Interface.Glyph.OP_LG,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.SIGN,
-              label: Calculator.Glyph.SIGN,
-              labelF: Calculator.Glyph.NONE,
-              labelK: Calculator.Glyph.NONE,
+              id: 15, // Processor.Processor.Key.THREE,
+              label: Interface.Glyph.THREE,
+              labelF: Interface.Glyph.OP_LN,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.ENTER_E,
-              label: Calculator.Glyph.OP_ENTER_EXPONENT,
-              labelF: Calculator.Glyph.NONE,
-              labelK: Calculator.Glyph.NONE,
+              id: 16, // Processor.Processor.Key.SWAP,
+              label: Interface.Glyph.OP_SWAP,
+              labelF: Interface.Glyph.OP_X_POW_Y,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-grayButton',
             },
             {
-              id: Processor.Processor.Key.CLEAR_X,
-              label: Calculator.Glyph.OP_CLEAR_X,
-              labelF: Calculator.Glyph.OP_CLEAR_F,
-              labelK: Calculator.Glyph.NONE,
+              id: 17, // Processor.Processor.Key.PUSH,
+              label: Interface.Glyph.OP_PUSH_X,
+              labelF: Interface.Glyph.OP_BACK_X,
+              labelK: Interface.Glyph.NONE,
+              style_class: 'panel-calc-rpn-grayButton',
+            },
+          ],
+          labels: true,
+        },
+        {
+          keys: [
+            {
+              id: 18, // Processor.Processor.Key.ZERO,
+              label: Interface.Glyph.ZERO,
+              labelF: Interface.Glyph.OP_TEN_POW_X,
+              labelK: Interface.Glyph.OP_NOP,
+              style_class: 'panel-calc-rpn-grayButton',
+            },
+            {
+              id: 19, // Processor.Processor.Key.POINT,
+              label: Interface.Glyph.POINT,
+              labelF: Interface.Glyph.OP_CIRCLE,
+              labelK: Interface.Glyph.NONE,
+              style_class: 'panel-calc-rpn-grayButton',
+            },
+            {
+              id: 20, // Processor.Processor.Key.SIGN,
+              label: Interface.Glyph.SIGN,
+              labelF: Interface.Glyph.NONE,
+              labelK: Interface.Glyph.NONE,
+              style_class: 'panel-calc-rpn-grayButton',
+            },
+            {
+              id: 21, // Processor.Processor.Key.ENTER_E,
+              label: Interface.Glyph.OP_ENTER_EXPONENT,
+              labelF: Interface.Glyph.NONE,
+              labelK: Interface.Glyph.NONE,
+              style_class: 'panel-calc-rpn-grayButton',
+            },
+            {
+              id: 22, // Processor.Processor.Key.CLEAR_X,
+              label: Interface.Glyph.OP_CLEAR_X,
+              labelF: Interface.Glyph.OP_CLEAR_F,
+              labelK: Interface.Glyph.NONE,
               style_class: 'panel-calc-rpn-redButton',
             },
           ],
@@ -550,7 +587,7 @@ export var Calculator = GObject.registerClass(
           style_class: 'panel-calc-rpn-BoxLayout',
         });
         row.keys.forEach((key) => {
-          if (key.id !== Processor.Processor.Key.RESERVED_NULL) {
+          if (key.id !== 0 /*Processor.Processor.Key.RESERVED_NULL*/) {
             const keyButton = new Key({
               label: key.label,
               style_class: key.style_class,
@@ -699,7 +736,7 @@ export var Calculator = GObject.registerClass(
       return string[0];
     }
 
-    private _onIndicatorSet(indicator: number, value: string): void {
+    /* private _onIndicatorSet(indicator: number, value: string): void {
       switch (indicator) {
         case Processor.Processor.Indicator.MANTISSA:
           this._mantissaIndicatorLabel.set_text(value);
@@ -753,35 +790,37 @@ export var Calculator = GObject.registerClass(
 
         default:
       }
+    } */
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private _onKeyboardDispatcher(button: typeof Key): void {
+      // this._processor.keyPressed(button.keyId);
     }
 
-    private _onKeyboardDispatcher(button: number): void {
-      this._processor.keyPressed(button.keyId);
-    }
-
-    private _onKeyboardKeyEvent(actor: Clutter.Actor, event: Clutter.KeyEvent): boolean {
-      let state: Clutter.ModifierType = event.get_state();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private _onKeyboardKeyEvent(_actor: CLUTTER.Actor, _event: CLUTTER.KeyEvent): boolean {
+      // let state: CLUTTER.ModifierType = event.get_state();
+      return Clutter.EVENT_PROPAGATE; //
 
       /*
-       * BUTTON1_MASK - the first mouse button.
-       * BUTTON2_MASK - the second mouse button.
-       * BUTTON3_MASK - the third mouse button.
-       * BUTTON4_MASK - the fourth mouse button.
-       * BUTTON5_MASK - the fifth mouse button.
-       * CONTROL_MASK - the Control key.
-       * HYPER_MASK - the Hyper modifier.
-       * LOCK_MASK - a Lock key (depending on the modifier mapping of the X server this may either be CapsLock or ShiftLock).
-       * META_MASK - the Meta modifier.
-       * MOD1_MASK - normally it is the Alt key.
-       * MOD2_MASK - normally it is the Numlock key.
-       * MOD3_MASK - the sixth modifier key ( it depends on the modifier mapping of the X server which key is interpreted as this modifier).
-       * MOD4_MASK - the seventh modifier key (it depends on the modifier mapping of the X server which key is interpreted as this modifier).
-       * MOD5_MASK - the eighth modifier key ( it depends on the modifier mapping of the X server which key is interpreted as this modifier).
-       * MODIFIER_MASK - a mask covering all modifier types.
-       * RELEASE_MASK - not used in GDK itself.
-       * SHIFT_MASK - the Shift key.
-       * SUPER_MASK - the Super modifier.
-       */
+      // BUTTON1_MASK - the first mouse button.
+      // BUTTON2_MASK - the second mouse button.
+      // BUTTON3_MASK - the third mouse button.
+      // BUTTON4_MASK - the fourth mouse button.
+      // BUTTON5_MASK - the fifth mouse button.
+      // CONTROL_MASK - the Control key.
+      // HYPER_MASK - the Hyper modifier.
+      // LOCK_MASK - a Lock key (depending on the modifier mapping of the X server this may either be CapsLock or ShiftLock).
+      // META_MASK - the Meta modifier.
+      // MOD1_MASK - normally it is the Alt key.
+      // MOD2_MASK - normally it is the Numlock key.
+      // MOD3_MASK - the sixth modifier key ( it depends on the modifier mapping of the X server which key is interpreted as this modifier).
+      // MOD4_MASK - the seventh modifier key (it depends on the modifier mapping of the X server which key is interpreted as this modifier).
+      // MOD5_MASK - the eighth modifier key ( it depends on the modifier mapping of the X server which key is interpreted as this modifier).
+      // MODIFIER_MASK - a mask covering all modifier types.
+      // RELEASE_MASK - not used in GDK itself.
+      // SHIFT_MASK - the Shift key.
+      // SUPER_MASK - the Super modifier.
       // if user has a modifier down (except capslock, numlock, alt ...)
       // then don't handle the key press here
       state &= ~Clutter.ModifierType.LOCK_MASK;
@@ -902,6 +941,7 @@ export var Calculator = GObject.registerClass(
       }
 
       return Clutter.EVENT_STOP;
+      */
     }
 
     private _onSettingsButtonClicked(): void {

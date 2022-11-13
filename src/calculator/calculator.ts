@@ -7,20 +7,18 @@
 
 'use strict';
 
+import type * as GIO from '@gi-types/gio2';
+import type * as INTERFACE from './interface';
+
 const {GObject} = imports.gi;
-// const Gettext = imports.gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
-
-// const Domain = Gettext.domain(Me.metadata.uuid);
-// const _ = Domain.gettext;
-// const ngettext = Domain.ngettext;
-
 const Main = imports.ui.main;
-const Interface = Me.imports.application.interface;
+const Interface = Me.imports.calculator.interface;
 
-export var Application = GObject.registerClass(
+// eslint-disable-next-line no-var
+export var Calculator = GObject.registerClass(
   {
     Properties: {
       uuid: GObject.ParamSpec.string(
@@ -32,15 +30,15 @@ export var Application = GObject.registerClass(
       ),
     },
   },
-  class Application extends GObject.Object {
-    private readonly _settings: Gio.Settings;
+  class Calculator extends GObject.Object implements GJS.IExtension {
+    private readonly _settings: GIO.Settings;
 
-    private _uuid: string;
+    private _uuid!: string | null;
     private _font: string;
     private _launcherBox: string;
     private _launcherPosition: number;
 
-    private _calculator: Interface.Calculator;
+    private _interface!: INTERFACE.IInterface | null;
 
     constructor(properties = {}) {
       super(properties);
@@ -61,18 +59,17 @@ export var Application = GObject.registerClass(
       this._launcherPosition = this._settings.get_enum('launcher-position');
     }
 
-    public get uuid(): string {
+    public get uuid(): string | null {
       if (this._uuid === undefined) this._uuid = null;
-
       return this._uuid;
     }
 
-    public set uuid(value: string) {
+    public set uuid(value: string | null) {
       if (this._uuid !== value) this._uuid = value;
     }
 
     public enable(): void {
-      this._calculator = new Interface.Calculator({
+      this._interface = new Interface.Interface({
         font: this._font,
       });
       /* In here we are adding the button in the status area
@@ -82,18 +79,19 @@ export var Application = GObject.registerClass(
        */
       Main.panel.addToStatusArea(
         this._uuid,
-        this._calculator.launcher,
+        this._interface.launcher,
         this._launcherPosition,
         this._launcherBox
       );
     }
 
     public disable(): void {
-      this._calculator.destroy();
-      this._calculator = null;
+      this._interface?.destroy();
+      this._interface = null;
     }
 
-    private _onExtensionSettingsChanged(source?: this, key?: string): void {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private _onExtensionSettingsChanged(_source: this, _key: string): void {
       this._font = this._settings.get_string('font');
       this._launcherBox = this._settings.get_string('launcher-box');
       this._launcherPosition = this._settings.get_enum('launcher-position');

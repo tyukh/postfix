@@ -12,6 +12,7 @@ import type * as GIO from '@gi-types/gio2';
 import type * as GTK from '@gi-types/gtk4';
 
 const {Adw, GObject, Gtk} = imports.gi;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 
@@ -19,9 +20,8 @@ const Gettext = imports.gettext;
 
 const Domain = Gettext.domain(Me.metadata.uuid);
 const _ = Domain.gettext;
-// const ngettext = Domain.ngettext;
 
-// eslint-disable-next-line no-var
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-var
 export var Preferences = GObject.registerClass(
   {
     GTypeName: 'Preferences',
