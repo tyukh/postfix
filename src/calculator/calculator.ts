@@ -78,8 +78,10 @@ export var Calculator = GObject.registerClass(
        * - `right` is the box where we want our button to be displayed (left/center/right)
        */
       Main.panel.addToStatusArea(
-        this._uuid,
-        this._interface.launcher,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this._uuid!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this._interface.launcher!,
         this._launcherPosition,
         this._launcherBox
       );
