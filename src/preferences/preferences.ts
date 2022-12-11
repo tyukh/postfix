@@ -7,11 +7,10 @@
 
 'use strict';
 
-import type * as ADW from '@gi-types/adw1';
-import type * as GIO from '@gi-types/gio2';
-import type * as GTK from '@gi-types/gtk4';
-
-const {Adw, GObject, Gtk} = imports.gi;
+import * as Adw from '@gi-types/adw1';
+import * as Gio from '@gi-types/gio2';
+import * as Gtk from '@gi-types/gtk4';
+import * as GObject from '@gi-types/gobject2';
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -29,13 +28,13 @@ export var Preferences = GObject.registerClass(
     InternalChildren: ['font', 'launcherBox', 'launcherPosition'],
   },
   class Preferences extends Adw.PreferencesPage {
-    private readonly _settings: GIO.Settings;
+    private readonly _settings: Gio.Settings;
 
-    private readonly _font!: GTK.FontButton;
-    private readonly _launcherBox!: GTK.Scale;
-    private readonly _launcherPosition!: GTK.Scale;
+    private readonly _font!: Gtk.FontButton;
+    private readonly _launcherBox!: Gtk.Scale;
+    private readonly _launcherPosition!: Gtk.Scale;
 
-    constructor(window: ADW.PreferencesWindow, properties = {}) {
+    constructor(window: Adw.PreferencesWindow, properties = {}) {
       super(properties);
 
       this._settings = ExtensionUtils.getSettings();

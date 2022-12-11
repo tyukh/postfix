@@ -13,6 +13,7 @@
         "gmodule",
         "gobject",
         "gulpfile",
+        "jscodeshift",
         "msgid",
         "ngettext",
         "numlock",

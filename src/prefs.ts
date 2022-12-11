@@ -7,16 +7,17 @@
 
 'use strict';
 
-import type * as ADW from '@gi-types/adw1';
+import * as Adw from '@gi-types/adw1';
+import * as Preferences from './preferences/preferences';
 
 const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
-const Preferences = Me.imports.preferences.preferences;
+// const Me = ExtensionUtils.getCurrentExtension();
+// const Preferences = Me.imports.preferences.preferences;
 
 export function init(): void {
   ExtensionUtils.initTranslations();
 }
 
-export function fillPreferencesWindow(window: ADW.PreferencesWindow): void {
+export function fillPreferencesWindow(window: Adw.PreferencesWindow): void {
   window.add(new Preferences.Preferences(window));
 }
