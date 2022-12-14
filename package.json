@@ -9,6 +9,10 @@
     "compile": "yarn tsc -p ./src/tsconfig.json"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@types/babel__core": "^7",
+    "@types/babel__preset-env": "^7",
     "@types/eslint": "^8",
     "@types/gulp": "^4",
     "@types/jscodeshift": "^0",
