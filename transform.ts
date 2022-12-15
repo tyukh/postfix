@@ -39,13 +39,12 @@ function exportVariables(source: string, api: API): string {
   return root.toSource();
 }
 
-function osPathToImportsExpression(api: API, osPath: string, object = ''): ExpressionKind {
+function urlToImportsExpression(api: API, url: string, object = ''): ExpressionKind {
   const j = api.jscodeshift;
 
-  let imports = TransformMap.conversion.get(osPath.trim());
+  let imports = TransformMap.conversion.get(url.trim());
   if (imports === undefined) {
-    imports =
-      'misc/extensionUtils/getCurrentExtension()/imports/' + osPath.trim().replace('./', '');
+    imports = 'misc/extensionUtils/getCurrentExtension()/imports/' + url.trim().replace('./', '');
   }
 
   const parts = imports.split('/');
@@ -70,7 +69,7 @@ function importDeclarations(source: string, api: API): string {
           ast = j.variableDeclarator(
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             specifier.local!,
-            osPathToImportsExpression(
+            urlToImportsExpression(
               api,
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
               path.node.source.value?.toString()!,
@@ -83,7 +82,7 @@ function importDeclarations(source: string, api: API): string {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             specifier.local!,
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
-            osPathToImportsExpression(api, path.node.source.value?.toString()!)
+            urlToImportsExpression(api, path.node.source.value?.toString()!)
           );
           break;
       }
